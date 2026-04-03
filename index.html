@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sauced</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- PUBLIC VIEW -->
+  <div id="publicView" class="view active">
+    <header class="header">
+      <div class="header-inner">
+        <h1 class="logo">Sauced</h1>
+        <div class="header-right">
+          <select id="cityFilter" class="city-select" onchange="loadRestaurants()">
+            <option value="">Loading...</option>
+          </select>
+          <button class="admin-link" onclick="showView('passwordView')">Admin</button>
+        </div>
+      </div>
+    </header>
+    <main class="main">
+      <div id="restaurantList" class="restaurant-list"></div>
+    </main>
+  </div>
+
+  <!-- PASSWORD VIEW -->
+  <div id="passwordView" class="view">
+    <header class="header">
+      <div class="header-inner">
+        <h1 class="logo">Sauced</h1>
+      </div>
+    </header>
+    <main class="main">
+      <div class="password-screen">
+        <p class="pw-label">Admin access</p>
+        <input type="password" id="pwInput" class="pw-input" placeholder="Password" onkeydown="if(event.key==='Enter')checkPw()" />
+        <button class="btn-dark" onclick="checkPw()">Enter</button>
+        <p class="pw-error" id="pwError">Incorrect password</p>
+      </div>
+    </main>
+  </div>
+
+  <!-- ADMIN VIEW -->
+  <div id="adminView" class="view">
+    <header class="header">
+      <div class="header-inner">
+        <h1 class="logo">Sauced <span class="admin-badge">Admin</span></h1>
+        <button class="admin-link" onclick="showView('publicView'); loadRestaurants();">Back to site</button>
+      </div>
+    </header>
+    <main class="main">
+      <div class="admin-tabs">
+        <button class="tab active" onclick="switchTab(this,'addTab')">Add</button>
+        <button class="tab" onclick="switchTab(this,'restaurantsTab'); loadAdminRestaurants();">Restaurants</button>
+        <button class="tab" onclick="switchTab(this,'cuisineTab'); loadCuisines();">Cuisine</button>
+        <button class="tab" onclick="switchTab(this,'cityTab'); loadCities();">Cities</button>
+      </div>
+
+      <!-- ADD TAB -->
+      <div id="addTab" class="tab-content active">
+        <div class="form-group">
+          <label class="form-label">City</label>
+          <select id="entryCity" class="form-input"></select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Restaurant name</label>
+          <div class="find-row">
+            <input id="entryName" class="form-input" placeholder="e.g. Wildflower" />
+            <button class="btn-outline" onclick="findPlace()">Find</button>
+          </div>
+          <div id="placeResult" class="place-result"></div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Address</label>
+          <input id="entryAddress" class="form-input" placeholder="Will fill from Google Places" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Cuisine</label>
+          <select id="entryCuisine" class="form-input"></select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Vibe</label>
+          <select id="entryVibe" class="form-input">
+            <option>Casual</option>
+            <option>Good Vibes</option>
+            <option>V Fancy</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Notes</label>
+          <textarea id="entryNotes" class="form-input" rows="4" placeholder="What made it memorable..."></textarea>
+        </div>
+        <button class="btn-dark full-width" onclick="saveRestaurant()">Save restaurant</button>
+      </div>
+
+      <!-- RESTAURANTS TAB -->
+      <div id="restaurantsTab" class="tab-content">
+        <div id="adminRestaurantList" class="manage-list"></div>
+      </div>
+
+      <!-- CUISINE TAB -->
+      <div id="cuisineTab" class="tab-content">
+        <div id="cuisineList" class="manage-list"></div>
+        <div class="add-row">
+          <input id="newCuisineInput" class="form-input" placeholder="Add a cuisine type..." />
+          <button class="btn-outline" onclick="addCuisine()">Add</button>
+        </div>
+      </div>
+
+      <!-- CITY TAB -->
+      <div id="cityTab" class="tab-content">
+        <div id="cityList" class="manage-list"></div>
+        <div class="add-row">
+          <input id="newCityInput" class="form-input" placeholder="Add a city..." />
+          <button class="btn-outline" onclick="addCity()">Add</button>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    window.ENV_SUPABASE_URL = 'https://odrfrkmieatltvnksizd.supabase.co';
+    window.ENV_SUPABASE_KEY = 'sb_publishable_rqgtDpFqHfpfTbAkvJBAjw_E2_Wth8U';
+    window.ENV_ADMIN_PASSWORD = '2026';
+  </script>
+  <script src="app.js"></script>
+</body>
+</html>

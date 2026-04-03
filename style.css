@@ -1,0 +1,119 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --black: #1a1a1a;
+  --white: #ffffff;
+  --beige: #faf9f7;
+  --beige-mid: #f0ede8;
+  --border: rgba(0,0,0,0.1);
+  --text-secondary: #7a7570;
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+
+html { font-size: 16px; }
+body { font-family: var(--font-body); background: var(--beige); color: var(--black); min-height: 100vh; }
+
+/* VIEWS */
+.view { display: none; }
+.view.active { display: block; }
+
+/* HEADER */
+.header { background: var(--white); border-bottom: 0.5px solid var(--border); position: sticky; top: 0; z-index: 10; }
+.header-inner { max-width: 680px; margin: 0 auto; padding: 0 20px; height: 56px; display: flex; align-items: center; justify-content: space-between; }
+.logo { font-family: var(--font-display); font-size: 24px; font-weight: 400; letter-spacing: 0.04em; display: flex; align-items: center; gap: 10px; }
+.admin-badge { font-family: var(--font-body); font-size: 11px; font-weight: 400; background: var(--black); color: var(--white); padding: 2px 8px; border-radius: 20px; letter-spacing: 0.06em; vertical-align: middle; }
+.header-right { display: flex; align-items: center; gap: 16px; }
+.city-select { font-family: var(--font-body); font-size: 13px; border: 0.5px solid var(--border); border-radius: 6px; padding: 6px 10px; background: var(--beige); color: var(--black); cursor: pointer; }
+.admin-link { font-family: var(--font-body); font-size: 12px; color: var(--text-secondary); background: none; border: none; cursor: pointer; letter-spacing: 0.04em; }
+.admin-link:hover { color: var(--black); }
+
+/* MAIN */
+.main { max-width: 680px; margin: 0 auto; padding: 28px 20px; }
+
+/* RESTAURANT CARDS */
+.restaurant-list { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 0.5px solid var(--border); border-radius: 12px; overflow: hidden; }
+.restaurant-card { background: var(--white); padding: 20px 24px; transition: background 0.15s; }
+.restaurant-card:hover { background: #fdfcfb; }
+.card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 8px; }
+.card-name { font-family: var(--font-display); font-size: 20px; font-weight: 500; line-height: 1.2; }
+.vibe-badge { font-size: 11px; padding: 3px 10px; border-radius: 20px; letter-spacing: 0.04em; white-space: nowrap; flex-shrink: 0; margin-top: 3px; }
+.vibe-casual { background: var(--beige-mid); color: #6b6560; }
+.vibe-mid { background: #e8ecf0; color: #4a5a6b; }
+.vibe-fancy { background: var(--black); color: var(--beige); }
+.card-meta { font-size: 12px; color: var(--text-secondary); display: flex; gap: 6px; flex-wrap: wrap; align-items: center; margin-bottom: 4px; }
+.meta-dot { opacity: 0.4; }
+.card-notes { font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin-top: 12px; padding-top: 12px; border-top: 0.5px solid var(--border); }
+.empty-state { text-align: center; padding: 60px 20px; color: var(--text-secondary); font-size: 14px; background: var(--white); border-radius: 12px; border: 0.5px solid var(--border); }
+
+/* PASSWORD */
+.password-screen { max-width: 320px; margin: 80px auto; display: flex; flex-direction: column; gap: 12px; }
+.pw-label { font-family: var(--font-display); font-size: 22px; margin-bottom: 4px; }
+.pw-input { font-family: var(--font-body); width: 100%; padding: 10px 14px; font-size: 14px; border: 0.5px solid var(--border); border-radius: 8px; background: var(--white); color: var(--black); }
+.pw-input:focus { outline: none; border-color: rgba(0,0,0,0.3); }
+.pw-error { font-size: 12px; color: #c0392b; display: none; }
+.pw-error.show { display: block; }
+
+/* ADMIN TABS */
+.admin-tabs { display: grid; grid-template-columns: repeat(4, 1fr); border: 0.5px solid var(--border); border-radius: 8px; overflow: hidden; margin-bottom: 24px; background: var(--white); }
+.tab { padding: 10px 4px; font-size: 12px; font-family: var(--font-body); border: none; background: none; cursor: pointer; color: var(--text-secondary); letter-spacing: 0.03em; transition: all 0.15s; }
+.tab.active { background: var(--black); color: var(--white); }
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+/* FORMS */
+.form-group { margin-bottom: 16px; }
+.form-label { font-size: 11px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-secondary); display: block; margin-bottom: 6px; }
+.form-input { width: 100%; padding: 10px 12px; font-size: 14px; font-family: var(--font-body); border: 0.5px solid var(--border); border-radius: 8px; background: var(--white); color: var(--black); }
+.form-input:focus { outline: none; border-color: rgba(0,0,0,0.3); }
+textarea.form-input { resize: vertical; }
+.find-row { display: flex; gap: 8px; }
+.find-row .form-input { flex: 1; }
+.place-result { margin-top: 8px; padding: 12px; background: var(--beige-mid); border-radius: 8px; font-size: 13px; color: var(--text-secondary); line-height: 1.5; display: none; }
+.place-result.show { display: block; }
+.add-row { display: flex; gap: 8px; margin-top: 16px; }
+.add-row .form-input { flex: 1; }
+select.form-input, .city-select  {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 28px;
+}
+
+/* BUTTONS */
+.btn-dark { background: var(--black); color: var(--white); border: none; border-radius: 8px; padding: 11px 20px; font-size: 13px; font-family: var(--font-body); cursor: pointer; letter-spacing: 0.03em; transition: background 0.15s; }
+.btn-dark:hover { background: #333; }
+.btn-dark.full-width { width: 100%; }
+.btn-outline { background: var(--white); color: var(--black); border: 0.5px solid var(--black); border-radius: 8px; padding: 10px 16px; font-size: 13px; font-family: var(--font-body); cursor: pointer; white-space: nowrap; transition: all 0.15s; }
+.btn-outline:hover { background: var(--black); color: var(--white); }
+
+/* MANAGE LISTS */
+.manage-list { background: var(--white); border: 0.5px solid var(--border); border-radius: 10px; overflow: hidden; }
+.manage-item { display: flex; align-items: center; padding: 14px 16px; border-bottom: 0.5px solid var(--border); gap: 10px; }
+.manage-item:last-child { border-bottom: none; }
+.manage-item-content { flex: 1; min-width: 0; }
+.manage-item-name { font-size: 14px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.manage-item-sub { font-size: 12px; color: var(--text-secondary); margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.edit-btn { font-size: 12px; color: var(--text-secondary); background: none; border: none; cursor: pointer; padding: 4px 8px; border-radius: 5px; white-space: nowrap; }
+.edit-btn:hover { background: var(--beige); color: var(--black); }
+.del-btn { font-size: 12px; color: #c0392b; background: none; border: none; cursor: pointer; padding: 4px 8px; white-space: nowrap; }
+
+/* EDIT PANEL */
+.edit-panel { background: var(--beige); border-top: 0.5px solid var(--border); padding: 14px 16px; display: none; }
+.edit-panel.show { display: block; }
+.edit-panel .form-group { margin-bottom: 10px; }
+.edit-panel .form-input { font-size: 13px; padding: 8px 10px; }
+.edit-actions { display: flex; gap: 8px; margin-top: 8px; }
+.edit-actions .btn-dark { padding: 8px 16px; font-size: 12px; }
+.edit-actions .btn-outline { padding: 8px 16px; font-size: 12px; }
+.edit-row { display: flex; gap: 8px; }
+.edit-row > div { flex: 1; }
+
+/* TOAST */
+.toast { position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%); background: var(--black); color: var(--white); padding: 10px 22px; border-radius: 20px; font-size: 13px; opacity: 0; transition: opacity 0.25s; pointer-events: none; z-index: 100; white-space: nowrap; }
+.toast.show { opacity: 1; }
+
+/* LOADING */
+.loading { text-align: center; padding: 40px; color: var(--text-secondary); font-size: 13px; }
