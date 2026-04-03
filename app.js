@@ -3,7 +3,7 @@ const SUPABASE_URL = window.ENV_SUPABASE_URL || '';
 const SUPABASE_KEY = window.ENV_SUPABASE_KEY || '';
 const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-const ADMIN_PASSWORD = window.ENV_ADMIN_PASSWORD || 'sauced2024';
+const ADMIN_PASSWORD = window.ENV_ADMIN_PASSWORD || '2026';
 
 // ── App state ────────────────────────────────────────────────────
 let allCities = [];
