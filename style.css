@@ -32,8 +32,8 @@ body { font-family: var(--font-body); background: var(--beige); color: var(--bla
 .main { max-width: 680px; margin: 0 auto; padding: 28px 20px; }
 
 /* RESTAURANT CARDS */
-.restaurant-list { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 0.5px solid var(--border); border-radius: 12px; overflow: hidden; }
-.restaurant-card { background: var(--white); padding: 20px 24px; transition: background 0.15s; }
+.restaurant-list { display: flex; flex-direction: column; gap: 8px; }
+.restaurant-card { background: var(--white); padding: 20px 24px; border-radius: 10px; border: 0.5px solid var(--border); transition: background 0.15s; }
 .restaurant-card:hover { background: #fdfcfb; }
 .card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 8px; }
 .card-name { font-family: var(--font-display); font-size: 18px; font-weight: 700; line-height: 1.2; }
