@@ -60,7 +60,7 @@ async function loadRestaurants() {
   if (error) { list.innerHTML = '<div class="empty-state">Something went wrong.</div>'; return; }
   if (!data.length) { list.innerHTML = '<div class="empty-state">No restaurants added for this city yet.</div>'; return; }
   list.innerHTML = data.map(r => {
-    const vibeClass = r.vibe === 'Casual' ? 'vibe-casual' : r.vibe === 'Mid-range' ? 'vibe-mid' : 'vibe-fancy';
+    const vibeClass = r.vibe === 'Casual' ? 'vibe-casual' : r.vibe === 'Good Vibes' ? 'vibe-mid' : 'vibe-fancy';
     return `<div class="restaurant-card">
       <div class="card-top">
         <span class="card-name">${r.name}</span>
